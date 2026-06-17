@@ -85,6 +85,53 @@
 
 </div>
 
+<!-- ── Mobile bottom nav (< 960px) ───────────────── -->
+<nav id="mobile-nav">
+  <button class="mnav-btn" data-sheet="left" data-panel="templates">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+      <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+      <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+    </svg>
+    <span>Templates</span>
+  </button>
+  <button class="mnav-btn" data-sheet="left" data-panel="fundos">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+      <polyline points="21 15 16 10 5 21"/>
+    </svg>
+    <span>Fundos</span>
+  </button>
+  <button class="mnav-btn" data-sheet="left" data-panel="texto">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M4 7V4h16v3M9 20h6M12 4v16"/>
+    </svg>
+    <span>Texto</span>
+  </button>
+  <button class="mnav-btn" data-sheet="left" data-panel="upload">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/>
+      <line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+    <span>Upload</span>
+  </button>
+  <button class="mnav-btn" data-sheet="right" id="mnav-props">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <line x1="4" y1="6" x2="20" y2="6"/>
+      <line x1="4" y1="12" x2="20" y2="12"/>
+      <line x1="4" y1="18" x2="20" y2="18"/>
+      <circle cx="9" cy="6" r="2" fill="var(--bg-panel)" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="15" cy="12" r="2" fill="var(--bg-panel)" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="9" cy="18" r="2" fill="var(--bg-panel)" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
+    <span>Props</span>
+  </button>
+</nav>
+<div id="sheet-backdrop"></div>
+
 <!-- ── Export overlay ────────────────────────────── -->
 <div id="export-overlay">
   <div class="export-spinner"></div>

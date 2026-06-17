@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buildLeftPanel();
   buildRightPanel();
   bindHeader();
+  initMobileNav();
   setBackground('#1a1a1a', 'color');
 });
 
@@ -277,6 +278,54 @@ function bindPhotoPanZoom(layer) {
   document.addEventListener('mousemove', layer._onMousemove);
   document.addEventListener('mouseup',   layer._onMouseup);
   layer.addEventListener('wheel', layer._onWheel, { passive: false });
+
+  // touch: pan (1 finger) + pinch zoom (2 fingers)
+  let pinchDist0 = 0, pinchScale0 = 1;
+
+  layer._onTouchstart = e => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      pinchDist0  = Math.hypot(dx, dy);
+      pinchScale0 = photoBgState.scale;
+      photoDrag = null;
+      return;
+    }
+    if (e.touches.length !== 1) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    photoDrag = { startX: t.clientX, startY: t.clientY, origX: photoBgState.x, origY: photoBgState.y };
+    layer.classList.add('dragging');
+  };
+  layer._onTouchmove = e => {
+    e.preventDefault();
+    if (e.touches.length === 2 && pinchDist0 > 0) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      photoBgState.scale = Math.min(5, Math.max(0.5, pinchScale0 * (Math.hypot(dx, dy) / pinchDist0)));
+      applyPhotoPan();
+      return;
+    }
+    if (!photoDrag || e.touches.length !== 1) return;
+    const t = e.touches[0];
+    photoBgState.x = photoDrag.origX + (t.clientX - photoDrag.startX) / canvasScale;
+    photoBgState.y = photoDrag.origY + (t.clientY - photoDrag.startY) / canvasScale;
+    applyPhotoPan();
+  };
+  layer._onTouchend = () => {
+    photoDrag = null;
+    pinchDist0 = 0;
+    layer.classList.remove('dragging');
+    currentBg.photoPan   = { x: photoBgState.x, y: photoBgState.y };
+    currentBg.photoScale = photoBgState.scale;
+    if (slides[activeSlide]) slides[activeSlide].bg = JSON.parse(JSON.stringify(currentBg));
+  };
+
+  layer.addEventListener('touchstart',  layer._onTouchstart,  { passive: false });
+  layer.addEventListener('touchmove',   layer._onTouchmove,   { passive: false });
+  layer.addEventListener('touchend',    layer._onTouchend);
+  layer.addEventListener('touchcancel', layer._onTouchend);
 }
 
 function unbindPhotoPanZoom() {
@@ -286,7 +335,12 @@ function unbindPhotoPanZoom() {
   if (layer._onMousemove)  document.removeEventListener('mousemove', layer._onMousemove);
   if (layer._onMouseup)    document.removeEventListener('mouseup', layer._onMouseup);
   if (layer._onWheel)      layer.removeEventListener('wheel', layer._onWheel);
+  if (layer._onTouchstart) layer.removeEventListener('touchstart', layer._onTouchstart);
+  if (layer._onTouchmove)  layer.removeEventListener('touchmove',  layer._onTouchmove);
+  if (layer._onTouchend)   layer.removeEventListener('touchend',   layer._onTouchend);
+  if (layer._onTouchend)   layer.removeEventListener('touchcancel',layer._onTouchend);
   layer._onMousedown = layer._onMousemove = layer._onMouseup = layer._onWheel = null;
+  layer._onTouchstart = layer._onTouchmove = layer._onTouchend = null;
 }
 
 /* ── Adicionar texto ──────────────────────────────── */
@@ -351,6 +405,44 @@ function renderUploadPanel(body) {
 function buildRightPanel() {
   document.getElementById('props-panel').innerHTML = '';
   updatePropsPanel();
+}
+
+/* ── Mobile nav ───────────────────────────────────── */
+function initMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  const backdrop = document.getElementById('sheet-backdrop');
+  if (!nav || !backdrop) return;
+
+  nav.addEventListener('click', e => {
+    const btn = e.target.closest('.mnav-btn');
+    if (!btn) return;
+
+    const sheetTarget = btn.dataset.sheet === 'right' ? 'panel-right' : 'panel-left';
+    const panelKey    = btn.dataset.panel;
+    const panelEl     = document.getElementById(sheetTarget);
+    const isActive    = btn.classList.contains('mnav-active');
+
+    closeMobileSheets();
+
+    if (!isActive) {
+      if (panelKey) {
+        const tab = document.querySelector(`#panel-left .panel-tab[data-panel="${panelKey}"]`);
+        if (tab) tab.click();
+      }
+      panelEl.classList.add('sheet-open');
+      backdrop.classList.add('visible');
+      btn.classList.add('mnav-active');
+    }
+  });
+
+  backdrop.addEventListener('click', closeMobileSheets);
+}
+
+function closeMobileSheets() {
+  document.getElementById('panel-left')?.classList.remove('sheet-open');
+  document.getElementById('panel-right')?.classList.remove('sheet-open');
+  document.getElementById('sheet-backdrop')?.classList.remove('visible');
+  document.querySelectorAll('.mnav-btn').forEach(b => b.classList.remove('mnav-active'));
 }
 
 /* ── Header actions ───────────────────────────────── */

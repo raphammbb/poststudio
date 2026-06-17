@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <pattern id="cross" width="60" height="60" patternUnits="userSpaceOnUse">
+      <rect x="26" y="10" width="8" height="40" fill="rgba(255,255,255,0.07)" rx="1"/>
+      <rect x="10" y="26" width="40" height="8" fill="rgba(255,255,255,0.07)" rx="1"/>
+    </pattern>
+  </defs>
+  <rect width="1080" height="1350" fill="#090909"/>
+  <rect width="1080" height="1350" fill="url(#cross)"/>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <rect width="1080" height="1350" fill="#0a0a0a"/>
+  <path d="M0,100 Q270,50 540,100 Q810,150 1080,100" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,180 Q270,130 540,180 Q810,230 1080,180" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,260 Q270,210 540,260 Q810,310 1080,260" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,340 Q270,290 540,340 Q810,390 1080,340" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,420 Q270,370 540,420 Q810,470 1080,420" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,500 Q270,450 540,500 Q810,550 1080,500" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,580 Q270,530 540,580 Q810,630 1080,580" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,660 Q270,610 540,660 Q810,710 1080,660" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,740 Q270,690 540,740 Q810,790 1080,740" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,820 Q270,770 540,820 Q810,870 1080,820" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,900 Q270,850 540,900 Q810,950 1080,900" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,980 Q270,930 540,980 Q810,1030 1080,980" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,1060 Q270,1010 540,1060 Q810,1110 1080,1060" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,1140 Q270,1090 540,1140 Q810,1190 1080,1140" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,1220 Q270,1170 540,1220 Q810,1270 1080,1220" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+  <path d="M0,1300 Q270,1250 540,1300 Q810,1350 1080,1300" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+</svg>

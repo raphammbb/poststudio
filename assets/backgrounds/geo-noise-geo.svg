@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <filter id="blur"><feGaussianBlur stdDeviation="0.5"/></filter>
+  </defs>
+  <rect width="1080" height="1350" fill="#090909"/>
+  <!-- scattered small squares for a grain effect -->
+  <g fill="rgba(255,255,255,0.06)" filter="url(#blur)">
+    <rect x="80"  y="120" width="4" height="4"/>
+    <rect x="200" y="80"  width="6" height="2"/>
+    <rect x="340" y="200" width="3" height="6"/>
+    <rect x="460" y="60"  width="5" height="3"/>
+    <rect x="600" y="160" width="4" height="4"/>
+    <rect x="720" y="90"  width="2" height="7"/>
+    <rect x="860" y="140" width="6" height="3"/>
+    <rect x="980" y="200" width="4" height="5"/>
+    <rect x="140" y="300" width="3" height="3"/>
+    <rect x="280" y="380" width="5" height="2"/>
+    <rect x="420" y="320" width="4" height="6"/>
+    <rect x="560" y="400" width="3" height="3"/>
+    <rect x="700" y="300" width="6" height="4"/>
+    <rect x="840" y="360" width="2" height="5"/>
+    <rect x="960" y="280" width="5" height="3"/>
+    <rect x="60"  y="500" width="4" height="4"/>
+    <rect x="180" y="480" width="3" height="6"/>
+    <rect x="320" y="540" width="6" height="2"/>
+    <rect x="480" y="500" width="3" height="4"/>
+    <rect x="620" y="560" width="5" height="3"/>
+    <rect x="760" y="480" width="4" height="5"/>
+    <rect x="900" y="520" width="2" height="4"/>
+    <rect x="100" y="680" width="5" height="3"/>
+    <rect x="240" y="700" width="3" height="5"/>
+    <rect x="400" y="660" width="6" height="2"/>
+    <rect x="540" y="720" width="4" height="4"/>
+    <rect x="680" y="680" width="3" height="6"/>
+    <rect x="820" y="700" width="5" height="3"/>
+    <rect x="960" y="660" width="2" height="5"/>
+    <rect x="150" y="880" width="4" height="3"/>
+    <rect x="300" y="860" width="3" height="4"/>
+    <rect x="450" y="900" width="5" height="2"/>
+    <rect x="600" y="860" width="4" height="5"/>
+    <rect x="740" y="920" width="2" height="4"/>
+    <rect x="880" y="880" width="6" height="3"/>
+    <rect x="80"  y="1060" width="3" height="5"/>
+    <rect x="220" y="1040" width="5" height="3"/>
+    <rect x="380" y="1080" width="4" height="4"/>
+    <rect x="520" y="1040" width="3" height="6"/>
+    <rect x="660" y="1060" width="5" height="2"/>
+    <rect x="800" y="1100" width="4" height="3"/>
+    <rect x="940" y="1040" width="2" height="5"/>
+    <rect x="120" y="1240" width="4" height="4"/>
+    <rect x="260" y="1220" width="3" height="5"/>
+    <rect x="420" y="1260" width="6" height="2"/>
+    <rect x="560" y="1220" width="4" height="4"/>
+    <rect x="700" y="1280" width="3" height="3"/>
+    <rect x="840" y="1240" width="5" height="4"/>
+    <rect x="980" y="1220" width="2" height="6"/>
+  </g>
+</svg>

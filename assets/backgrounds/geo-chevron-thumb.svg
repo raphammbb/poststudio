@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="270" height="337">
+  <defs>
+    <pattern id="chev" width="80" height="40" patternUnits="userSpaceOnUse">
+      <polyline points="0,20 20,0 40,20 60,0 80,20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+    </pattern>
+  </defs>
+  <rect width="270" height="337" fill="#0a0a0a"/>
+  <rect width="270" height="337" fill="url(#chev)"/>
+</svg>

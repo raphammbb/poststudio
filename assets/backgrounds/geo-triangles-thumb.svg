@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="270" height="337">
+  <defs>
+    <pattern id="tri" width="80" height="70" patternUnits="userSpaceOnUse">
+      <polygon points="40,5 75,65 5,65" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+  <rect width="270" height="337" fill="#090909"/>
+  <rect width="270" height="337" fill="url(#tri)"/>
+</svg>

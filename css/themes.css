@@ -1,0 +1,17 @@
+:root {
+  --bg-app:       #0d0d0d;
+  --bg-panel:     #161616;
+  --bg-panel-2:   #1f1f1f;
+  --border:       #2a2a2a;
+  --text-primary: #f0f0f0;
+  --text-muted:   #6b6b6b;
+  --accent:       #7c5cf0;
+  --accent-hover: #9b7fff;
+  --danger:       #ef4444;
+  --canvas-bg:    #111111;
+
+  --panel-width:  260px;
+  --header-h:     52px;
+  --radius:       8px;
+  --radius-sm:    5px;
+}

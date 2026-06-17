@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="270" height="337">
+  <defs>
+    <filter id="f" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="turbulence" baseFrequency="0.006 0.008" numOctaves="3" seed="14" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="60" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  <rect width="270" height="337" fill="#080810"/>
+  <path d="M0,400 Q360,200 720,500 Q900,650 1080,400" fill="none" stroke="rgba(100,60,200,0.3)" stroke-width="80" filter="url(#f)"/>
+  <path d="M0,700 Q400,900 800,650 Q950,570 1080,800" fill="none" stroke="rgba(30,80,160,0.25)" stroke-width="100" filter="url(#f)"/>
+  <path d="M0,1100 Q300,900 600,1000 Q840,1080 1080,950" fill="none" stroke="rgba(120,40,140,0.2)" stroke-width="90" filter="url(#f)"/>
+</svg>

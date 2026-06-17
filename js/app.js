@@ -11,8 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
   buildRightPanel();
   bindHeader();
   initMobileNav();
+  initViewportFix();
   setBackground('#1a1a1a', 'color');
 });
+
+/* ── Viewport fix (iOS virtual keyboard) ──────────── */
+function initViewportFix() {
+  if (!window.visualViewport) return;
+  let raf = null;
+  const update = () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      // pin body height to the actual visible area (keyboard excluded)
+      document.body.style.height = window.visualViewport.height + 'px';
+      scaleCanvas();
+    });
+  };
+  window.visualViewport.addEventListener('resize', update);
+  window.visualViewport.addEventListener('scroll', update);
+}
 
 /* ── Toast ────────────────────────────────────────── */
 let toastTimer = null;

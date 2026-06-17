@@ -78,13 +78,45 @@ async function exportAllSlides() {
   }
 }
 
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
 function downloadCanvas(imgCanvas, name) {
-  const link  = document.createElement('a');
+  const dataUrl = imgCanvas.toDataURL('image/png');
+  if (isIOS()) {
+    showIOSSaveModal(dataUrl);
+    return;
+  }
+  const link = document.createElement('a');
   link.download = name;
-  link.href     = imgCanvas.toDataURL('image/png');
+  link.href = dataUrl;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+function showIOSSaveModal(dataUrl) {
+  let modal = document.getElementById('ios-save-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'ios-save-modal';
+    modal.innerHTML = `
+      <div id="ios-save-inner">
+        <div id="ios-save-top">
+          <span>Segure a imagem para salvar</span>
+          <button id="ios-save-close">✕</button>
+        </div>
+        <img id="ios-save-img" src="" alt="Post">
+        <p id="ios-save-hint">Toque e segure → <strong>Salvar Foto</strong></p>
+      </div>`;
+    document.body.appendChild(modal);
+    document.getElementById('ios-save-close').addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+  }
+  document.getElementById('ios-save-img').src = dataUrl;
+  modal.classList.add('open');
 }
 
 function showExportOverlay(visible) {

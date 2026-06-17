@@ -382,6 +382,7 @@ function exitTextEdit(node) {
     saveHistory();
   }
   node.setAttribute('contenteditable', 'false');
+  node.blur(); // dismiss iOS virtual keyboard
 }
 
 /* ── Keyboard ─────────────────────────────────────── */

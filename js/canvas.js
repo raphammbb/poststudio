@@ -14,18 +14,55 @@ let resizeState = null;
 
 /* ── Init ─────────────────────────────────────────── */
 function initCanvas() {
-  const area = document.getElementById('canvas-area');
   const canvas = document.getElementById('canvas');
 
   scaleCanvas();
   window.addEventListener('resize', scaleCanvas);
 
+  // mouse
   canvas.addEventListener('mousedown', onCanvasMousedown);
   document.addEventListener('mousemove', onDocMousemove);
   document.addEventListener('mouseup', onDocMouseup);
   document.addEventListener('keydown', onKeydown);
 
+  // touch (iPad / iPhone)
+  canvas.addEventListener('touchstart',  onCanvasTouchstart,  { passive: false });
+  document.addEventListener('touchmove',  onDocTouchmove,      { passive: false });
+  document.addEventListener('touchend',   onDocTouchend);
+  document.addEventListener('touchcancel', onDocTouchend);
+
   saveHistory();
+}
+
+/* ── Touch helpers ────────────────────────────────── */
+function touchToMouse(touch) {
+  return { clientX: touch.clientX, clientY: touch.clientY, button: 0, detail: 1 };
+}
+
+let lastTap = 0;
+
+function onCanvasTouchstart(e) {
+  if (e.touches.length > 1) return; // ignore multi-touch (pinch)
+  e.preventDefault();
+  const t = e.touches[0];
+
+  // detect double-tap (< 300ms between taps on same element)
+  const now = Date.now();
+  const isDoubleTap = (now - lastTap) < 300;
+  lastTap = now;
+
+  const fakeEv = { ...touchToMouse(t), detail: isDoubleTap ? 2 : 1, target: e.target };
+  onCanvasMousedown(fakeEv);
+}
+
+function onDocTouchmove(e) {
+  if (e.touches.length > 1) return;
+  e.preventDefault();
+  onDocMousemove(touchToMouse(e.touches[0]));
+}
+
+function onDocTouchend(e) {
+  onDocMouseup();
 }
 
 function scaleCanvas() {
